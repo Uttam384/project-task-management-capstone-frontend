@@ -3,9 +3,41 @@ import ProjectModal from "./ProjectModal";
 import TaskModal from "./TaskModal";
 import AddEmployeesToProject from "./AddEmployeesToProject"
 import TaskComments from "./TaskComments"
+import UpdateProjectModal from "./UpdateProjectModal";
+import UpdateTaskModal from "./UpdateTaskModal";
+
 
 export default function ProjectsPage() {
   const [open, setOpen] = useState(false);
+  const [project,setProject] = useState( {
+    "projectId": 5,
+    "fileId": null,
+    "projectName": "string",
+    "projectDescription": "string",
+    "projectStartDate": "2025-12-01T09:29:05.012",
+    "projectStatus": 0,
+    "projectEndDate": "2025-12-01T09:29:05.012",
+    "projectCreatedAt": "2025-12-01T09:29:09.0630536",
+    "tasks": [],
+    "userProjects": null,
+    "file": null
+  }
+)
+const [task,setTask] = useState({ "taskId": 5,
+    "projectId": 4,
+    "userId": null,
+    "fileId": null,
+    "taskTitle": "string",
+    "taskDescription": "string",
+    "taskPriority": 0,
+    "taskStatus": 0,
+    "taskDueDate": "2025-12-01T12:29:28.998",
+    "taskCreatedAt": "2025-12-01T12:28:11.2359146",
+    "user": null,
+    "project": null,
+    "comments": null,
+    "file": null
+})
 
   // onCreateProject receives FormData and plain dto (for flexibility)
   const handleCreate = async (formData, dto) => {
@@ -43,6 +75,31 @@ export default function ProjectsPage() {
     // refresh tasks, etc.
   };
 
+   const updateProject = async (id, payload) => {
+    const res = await fetch(`https://localhost:7228/api/project/${id}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    });
+
+    const data = await res.json();
+    console.log("Updated!", data);
+  };
+
+  const updateTask = async (id, payload) => {
+    const res = await fetch(
+      `https://localhost:7228/api/projecttask/${id}`,
+      {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      }
+    );
+
+    const data = await res.json();
+    console.log("Task Updated!", data);
+  };
+
   return (
     <div className="min-h-screen bg-[#f3f7f9] p-8">
       <div className="max-w-6xl mx-auto">
@@ -59,8 +116,22 @@ export default function ProjectsPage() {
         
         {/* {open && <AddEmployeesToProject setOpen={setOpen} />} */}
         
-        <TaskComments isOpen={open} onClose={() => setOpen(false)} currentUserId={1} />
+        {/* <TaskComments isOpen={open} onClose={() => setOpen(false)} currentUserId={1} /> */}
 
+        {/* <UpdateProjectModal
+          isOpen={open}
+          onClose={() => setOpen(false)}
+          project={project}
+          onUpdate={updateProject}
+        /> */}
+
+         <UpdateTaskModal
+            isOpen={open}
+            onClose={() => setOpen(false)}
+            task={task}
+            onUpdate={updateTask}
+          />
+          
       </div>
     </div>
   );

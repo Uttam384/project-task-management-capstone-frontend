@@ -6,6 +6,7 @@ import TaskComments from './components/TaskComments'
 import LogIn from './pages/LogIn'
 import Register from './pages/Register'
 import ProjectsPage from './components/ProjectsPage'
+import Home from './pages/Home'
 
 function App() {
 
