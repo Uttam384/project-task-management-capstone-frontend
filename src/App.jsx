@@ -5,12 +5,13 @@ import './App.css'
 import TaskComments from './components/TaskComments'
 import LogIn from './pages/LogIn'
 import Register from './pages/Register'
+import ProjectsPage from './components/ProjectsPage'
 
 function App() {
 
   return (
     <>
-      <Register />
+      <ProjectsPage />
     </>
   )
 }
