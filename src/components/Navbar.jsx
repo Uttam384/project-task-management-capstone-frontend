@@ -4,7 +4,7 @@ import { Clock } from 'lucide-react';
 
 const Navbar = () => {
   return (
-    <div className=' w-full h-20 bg-white border-b-2 border-[#988686] flex items-center justify-between px-10'>
+    <div className='fixed top-0 w-full z-50 h-20 bg-white border-b-2 border-[#988686] flex items-center justify-between px-10'>
       <div className='text-4xl font-bold flex items-center gap-1'><Clock size={36} strokeWidth={3} /> Skedulo</div>
       <div>
         <Link to="/" className='mx-4 text-lg font-medium'>Home</Link>

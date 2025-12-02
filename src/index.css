@@ -1,1 +1,5 @@
 @import "tailwindcss";
+html, body, #root {
+  /* Prefer this as last-resort guard - but try source fixes below first */
+  overflow-x: hidden;
+}

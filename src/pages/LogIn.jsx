@@ -40,9 +40,9 @@ const LogIn = () => {
   };
 
   return (
-    <div className="w-screen min-h-[calc(100vh-80px)] bg-linear-to-br from-slate-50 to-slate-100 flex items-center justify-center p-4">
-      <div className="w-full max-w-2xl ">
-        <div className="bg-white border-2 border-black px-16 py-12 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] rounded-lg">
+    <div className="pt-30 w-screen min-h-[calc(100vh-80px)] bg-linear-to-br from-slate-50 to-slate-100 flex items-center justify-center p-4">
+      <div className="w-full max-w-130 ">
+        <div className="bg-white border-2 border-black px-12 py-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] rounded-lg">
            <div className=" mb-8">
             <h1 className="text-4xl font-bold text-black mb-2">Log In</h1>
             <p className="text-gray-600">Welcome back</p>
