@@ -116,7 +116,7 @@ const [task,setTask] = useState({ "taskId": 5,
         
         {/* {open && <AddEmployeesToProject setOpen={setOpen} />} */}
         
-        {/* <TaskComments isOpen={open} onClose={() => setOpen(false)} currentUserId={1} /> */}
+        <TaskComments isOpen={open} onClose={() => setOpen(false)} currentUserId={1} />
 
         {/* <UpdateProjectModal
           isOpen={open}
@@ -125,12 +125,12 @@ const [task,setTask] = useState({ "taskId": 5,
           onUpdate={updateProject}
         /> */}
 
-         <UpdateTaskModal
+         {/* <UpdateTaskModal
             isOpen={open}
             onClose={() => setOpen(false)}
             task={task}
             onUpdate={updateTask}
-          />
+          /> */}
           
       </div>
     </div>
