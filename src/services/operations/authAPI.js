@@ -10,8 +10,8 @@ const {
     LOG_IN,
     FORGOT_PASSWORD,
     RESET_PASSWORD,
-    // GET_ALL_USERS  
-} = registerUserAPI
+    GET_ALL_USERS  
+} = registerUserAPI   
 
 export function getOtp({email,username,password,role}) {
   return async () => {
@@ -84,6 +84,7 @@ export function login({email,password,navigate}) {
 
       console.log("LOGIN_USER_DATA............", responseLogin.data.token)
       console.log("LOGIN_TOKEN............", responseLogin.data.token.jwtToken)
+      console.log("LOGIN_USER_ID............", responseLogin.data.token.userId)
       console.log("LOGIN_USER_NAME............", responseLogin.data.token.userName)
       console.log("LOGIN_USER_EMAIL............", responseLogin.data.token.userEmail)
       console.log("LOGIN_USER_ROLE............", responseLogin.data.token.userRole)
@@ -92,6 +93,8 @@ export function login({email,password,navigate}) {
       dispatch(setUserRole(responseLogin.data.token.userRole));
       dispatch(setToken(responseLogin.data.token.jwtToken));
       localStorage.setItem("token", JSON.stringify(responseLogin.data.token.jwtToken));
+      localStorage.setItem("userData", JSON.stringify({userId:responseLogin.data.token.userId ,userName: responseLogin.data.token.userName , email: responseLogin.data.token.userEmail, role: responseLogin.data.token.userRole}));
+      localStorage.setItem("userRole", JSON.stringify(responseLogin.data.token.userRole));
       navigate('/dashboard/my-profile');
     } catch (error) {
       console.log("LOGIN_API_ERROR....", error)
@@ -140,3 +143,22 @@ export function resetPassword({email,otp,newPassword,navigate}) {
     }
 }
 }
+
+
+export function getAllUser({token}){
+  return async () => {
+    try {
+    console.log("GET_ALL_USERS",GET_ALL_USERS);
+    const response = await apiConnector("GET",GET_ALL_USERS,{},{Authorization: `Bearer ${token}`});
+      console.log("GET_ALL_USERS API RESPONSE............", response)
+      if (!response.status == 200) {
+        throw new Error(response.data.message)
+      }
+      return response.data;
+    } catch (error) {
+      console.log("GET_ALL_USERS API ERROR....", error)
+      return false
+    }
+}
+}
+ 

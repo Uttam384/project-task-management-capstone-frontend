@@ -66,7 +66,7 @@ const Register = () => {
 
   return (
     <div className="w-screen min-h-[calc(100vh-80px)] bg-linear-to-br from-slate-50 to-slate-100 flex items-center justify-center p-4">
-      <div className="w-screen max-w-2xl">
+      <div className="w-screen max-w-xl">
         <div className="bg-white border-2 border-black px-16 py-12 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] rounded-lg ">
           {/* Email Input */}
           <div className="text-left mb-8">

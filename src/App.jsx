@@ -3,7 +3,7 @@ import reactLogo from './assets/react.svg'
 import './App.css'
 import { useEffect } from 'react'
 import Navbar from './components/Navbar'
-import { Route, Routes } from 'react-router-dom'
+import { Route, Routes, Navigate } from 'react-router-dom'
 
 import { useNavigate } from 'react-router-dom'
 import LogIn from './pages/LogIn'
@@ -16,6 +16,10 @@ import Dashboard from './pages/Dashboard'
 // import Loading from './components/Loading'
 import ForgotPassword from './pages/ForgotPassword'
 import MyProfile from './components/core/dashboard/MyProfile'
+import ProjectsView from './pages/ProjectsView'
+import Tasks from './components/core/dashboard/Tasks'
+import ActiveLogs from './components/core/dashboard/ActiveLogs'
+import LogOut from './pages/LogOut'
 
 function App() {
   // const dispatch = useDispatch();
@@ -45,7 +49,13 @@ function App() {
               </ProtectedRoute>
             }
           >
+            <Route index element={<Navigate to="my-profile" replace />} />
             <Route path="my-profile" element={<MyProfile />} />
+            <Route path="all-projects" element={<ProjectsView />} />
+            <Route path="projects" element={<ProjectsView />} />
+            <Route path="tasks" element={<Tasks />} />
+            <Route path="active-logs" element={<ActiveLogs />} />
+            <Route path="log-out" element={<LogOut />} />
             {/* <Route path="my-projects" element={<MyProjects/>} /> */}
           </Route>
       </Routes>
